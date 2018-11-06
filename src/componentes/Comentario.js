@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export default class Comentario extends Component {
     state = {
+        newComment: '',
         comments: [
             'Comment1',
             'Comment2',
@@ -10,7 +11,13 @@ export default class Comentario extends Component {
     }
     sendComment = () => {
         this.setState({
-            comments: [...this.state.comments, "New Comment!"]
+            comments: [...this.state.comments, this.state.newComment],
+            newComment: ''
+        });
+    }
+    handleChange = event => {
+        this.setState({
+            newComment: event.target.value
         });
     }
   render() {
@@ -19,7 +26,7 @@ export default class Comentario extends Component {
 
         { /* New Comment */}
         <div>
-            <textarea></textarea>
+            <textarea value={this.state.newComment} onChange={this.handleChange}></textarea>
             <button onClick={this.sendComment}>Send</button>
         </div>
         
