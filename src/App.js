@@ -1,16 +1,28 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-
-import Comentario from './componentes/Comentario';
+import NewComment from './componentes/NewComment';
+import Comments from './componentes/Comments';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Comentario/>
-      </div>
-    );
-  }
+    state = {
+        comments: ['Comment1', 'Comment2', 'Comment3']
+    }
+    sendComment = comment => {
+        this.setState({
+            comments: [
+                ...this.state.comments,
+                comment
+            ]
+        });
+    }
+    render() {
+        return (
+            <div className="App">
+              <NewComment sendComment={this.sendComment}/>
+              <Comments comments={this.state.comments}/>
+            </div>
+        );
+    }
 }
 
 export default App;
