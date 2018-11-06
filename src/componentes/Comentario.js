@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Comments from './Comments';
 
 export default class Comentario extends Component {
     state = {
@@ -29,14 +30,10 @@ export default class Comentario extends Component {
             <textarea value={this.state.newComment} onChange={this.handleChange}></textarea>
             <button onClick={this.sendComment}>Send</button>
         </div>
-        
-        { /* Comments */}
-        <div>
-            {this.state.comments.map( item => {
-                return "Hello World" + item
-            })}
-        </div>
+        <Comments comments={this.state.comments}/>
       </div>
     )
   }
 }
+
+
